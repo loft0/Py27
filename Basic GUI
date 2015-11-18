@@ -1,0 +1,72 @@
+#Basic GUI
+import wx
+
+class guiWindow(wx.Frame):
+
+    def __init__(self, *args, **kwargs):
+        super(guiWindow, self).__init__(*args, **kwargs)
+
+        self.Move((450,25))
+        self.Show()
+        self.theGUI()
+        self.CreateStatusBar()
+
+    def theGUI(self):
+
+        menuBar = wx.MenuBar()
+        opBtn = wx.Menu()#menu bar's first button
+        gemsBtn = wx.Menu()
+        herbsBtn = wx.Menu()
+        gamesBtn = wx.Menu()
+
+        #option items
+        closeIt = opBtn.Append(wx.ID_EXIT, 'Close', 'kko the program...')#append to 'Options'
+        newIt = opBtn.Append(wx.ID_EXIT,'New Item', 'Create a new working file...')
+
+        #gem button items
+        amethyst = gemsBtn.Append(wx.ID_EXIT,'Amethyst', 'Use the gem of clarity...')
+        pyrite = gemsBtn.Append(wx.ID_EXIT,'Pyrite', 'Use the gem of fire...')
+        lapis = gemsBtn.Append(wx.ID_EXIT,'Lapis Lazuli', 'Use the spiritual stone...')
+        jade = gemsBtn.Append(wx.ID_EXIT,'Jade', 'Use the gem of strength...')
+        peacock = gemsBtn.Append(wx.ID_EXIT,'Peacock Stone', 'Use the store for magic...')
+
+        #herbs items
+        dande = herbsBtn.Append(wx.ID_EXIT,'Dandelion', 'Use to clean the bloob...')
+        thyme = herbsBtn.Append(wx.ID_EXIT,'Thyme', 'Use to cure a illnes...')
+        tumric = herbsBtn.Append(wx.ID_EXIT,'Tumeric', 'Use for minor healing...')
+        mint = herbsBtn.Append(wx.ID_EXIT,'Mint', 'Use to cure minor illnes...')
+        lavender = herbsBtn.Append(wx.ID_EXIT,'Lavender', 'Use to sooth enimes...')
+
+        #games items
+        goldfsh = gamesBtn.Append(wx.ID_EXIT,'Goldfish', 'Play with the firends..')
+        ping = gamesBtn.Append(wx.ID_EXIT,'Ping-Pong', 'Play with opponent...')
+        solitar = gamesBtn.Append(wx.ID_EXIT,'Solitar', 'Play by yourself...')
+        agar = gamesBtn.Append(wx.ID_EXIT,'Agar.io', 'Be a Boss and reach number one.')
+
+        menuBar.Append(opBtn, 'Options')#menu bar's button 'Option'
+        menuBar.Append(gemsBtn, 'Gemstones')
+        menuBar.Append(herbsBtn, 'Herbs')
+        menuBar.Append(gamesBtn, 'Games')
+        
+
+        self.SetMenuBar(menuBar)
+
+        self.Bind(wx.EVT_MENU, self.Quit, closeIt)
+        self.Bind(wx.EVT_MENU, self.ameth, amethyst)
+
+        
+        self.Show(True)
+
+    def Quit(self, e):
+        self.Close()
+
+    def ameth(self, amethyst):
+        self.Close()
+
+def main():
+    app = wx.App()
+    guiWindow(None,title='Welcome')
+    app.MainLoop()
+
+main()
+
